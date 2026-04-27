@@ -39,6 +39,7 @@
   - `README.md`
 - Commit map:
   - `docs: add AI coding rules and root setup guide`
+  - `docs: add HRIS business reference docs`
 
 ### P3 - Root monorepo + shared packages
 - Status: `DONE`
@@ -54,9 +55,10 @@
   - `packages/redis/*`
 - Commit map:
   - `chore: scaffold root workspace and shared packages`
+  - `chore: add shared package implementations`
 
 ### P4 - App scaffolds
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Web co App Router scaffold va server actions chi goi API.
   - Server co Hono app, middleware auth/role va route mau.
@@ -69,7 +71,7 @@
   - `feat: scaffold web server and worker apps`
 
 ### P5 - Validation
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - `cmd /c bun install` thanh cong.
   - `cmd /c bun run build` thanh cong.
