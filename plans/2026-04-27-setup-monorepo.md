@@ -4,7 +4,7 @@
 - Task: Setup monorepo HRIS + bo sung noi quy AI Coding
 - Branch goc: `dev`
 - Branch lam viec: `chore/setup-monorepo`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 
 ## Muc tieu
 - Dung scaffold monorepo `Bun` + `Turborepo` theo kien truc HRIS.
@@ -27,7 +27,7 @@
 - Files du kien tac dong:
   - `plans/2026-04-27-setup-monorepo.md`
 - Commit map:
-  - `chore: initialize task plan and branch workflow`
+  - `docs: add AI coding rules and root setup guide`
 
 ### P2 - AI coding rules + root documentation
 - Status: `DONE`
