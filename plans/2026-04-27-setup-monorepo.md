@@ -41,7 +41,7 @@
   - `docs: add AI coding rules and root setup guide`
 
 ### P3 - Root monorepo + shared packages
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Co `package.json`, `turbo.json`, `bunfig.toml`, `tsconfig.base.json`, `.editorconfig`, `.env.example`.
   - Co `packages/shared-types`, `packages/db`, `packages/redis` build duoc.
@@ -56,7 +56,7 @@
   - `chore: scaffold root workspace and shared packages`
 
 ### P4 - App scaffolds
-- Status: `TODO`
+- Status: `IN PROGRESS`
 - Success criteria:
   - Web co App Router scaffold va server actions chi goi API.
   - Server co Hono app, middleware auth/role va route mau.
