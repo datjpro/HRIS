@@ -1,0 +1,24 @@
+{
+  "name": "hris-monorepo",
+  "private": true,
+  "packageManager": "bun@1.3.9",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev --parallel",
+    "dev:web": "bun --cwd apps/web run dev",
+    "dev:server": "bun --cwd apps/server run dev",
+    "dev:worker": "bun --cwd apps/worker run dev",
+    "typecheck": "turbo run typecheck",
+    "lint": "turbo run lint"
+  },
+  "devDependencies": {
+    "@types/node": "^22.15.17",
+    "bun-types": "^1.3.0",
+    "turbo": "^2.5.0",
+    "typescript": "^5.9.3"
+  }
+}
