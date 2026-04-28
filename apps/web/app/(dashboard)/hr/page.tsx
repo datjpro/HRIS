@@ -1,9 +1,12 @@
+import { DashboardHome } from "../../../components/dashboard-home";
+
 export default function HrDashboardPage() {
   return (
-    <main>
-      <h1>HR Dashboard</h1>
-      <p>Company-wide HR operations entry point.</p>
-    </main>
+    <DashboardHome
+      roleLabel="HR Workspace"
+      greetingName="HR"
+      summary="Monitor headcount movement, onboarding pipelines, and operational shortcuts for people operations."
+      primaryActionLabel="Onboard Employee"
+    />
   );
 }
-

@@ -1,9 +1,12 @@
+import { DashboardHome } from "../../../components/dashboard-home";
+
 export default function ManagerDashboardPage() {
   return (
-    <main>
-      <h1>Manager Dashboard</h1>
-      <p>Direct reports and team operations view.</p>
-    </main>
+    <DashboardHome
+      roleLabel="Manager Workspace"
+      greetingName="Manager"
+      summary="Review team onboarding, direct-report updates, and high-priority actions across your reporting lines."
+      primaryActionLabel="Review Team"
+    />
   );
 }
-
