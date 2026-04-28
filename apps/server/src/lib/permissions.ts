@@ -1,11 +1,12 @@
 import type { Permission, Role } from "@hris/shared-types";
 
 const rolePermissionMap: Record<Role, Permission[]> = {
-  EMPLOYEE: ["profile.read.self", "department.read"],
+  EMPLOYEE: ["profile.read.self", "department.read", "onboarding.read"],
   MANAGER: [
     "profile.read.self",
     "profile.read.team",
     "department.read",
+    "onboarding.read",
     "recruitment.request.read"
   ],
   HR: [
