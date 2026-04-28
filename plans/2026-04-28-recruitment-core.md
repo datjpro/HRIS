@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for recruitment`
 
 ### P2 - Recruitment API
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - API tao hiring request, approve/reject request.
   - API CRUD candidate/application/interview co RBAC.
@@ -31,7 +31,7 @@
   - `feat: implement recruitment api and queue integration`
 
 ### P3 - Worker Jobs & SLA Scheduler
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Worker xu ly email interview / rejection.
   - Scheduler kiem tra SLA 48h cua hiring request pending.
@@ -39,7 +39,7 @@
   - `feat: implement recruitment worker jobs and sla scheduler`
 
 ### P4 - Validation
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Prisma client generate thanh cong.
   - Build monorepo pass.
