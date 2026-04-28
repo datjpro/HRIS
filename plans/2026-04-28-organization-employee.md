@@ -30,7 +30,7 @@
   - `feat: implement department api with org cache`
 
 ### P3 - Employee Directory & Profile
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Employee chi xem basic/self.
   - Manager xem team.
@@ -39,7 +39,11 @@
   - `feat: implement employee directory and profile apis`
 
 ### P4 - Validation
-- Status: `TODO`
+- Status: `DONE`
+
+## Ket qua
+- Build monorepo thanh cong sau khi trien khai Department API, Employee Directory va Profile detail.
+- Directory va profile da ap dung RBAC theo role va field-level visibility cho `baseSalary`.
 - Success criteria:
   - Build monorepo pass.
   - API compile/type-safe.
