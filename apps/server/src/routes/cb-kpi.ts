@@ -7,6 +7,7 @@ import type { AppBindings } from "../lib/app-bindings";
 import { checkPermission } from "../middlewares/permission";
 import { getCachedSalaryBands, invalidateSalaryBandCache, setCachedSalaryBands } from "../lib/salary-band-cache";
 import type { PayrollExportJobPayload } from "@hris/shared-types";
+import { reportRateLimitMiddleware } from "../middlewares/rate-limit";
 
 export const cbKpiRouter = new Hono<AppBindings>();
 const reportQueue = createQueue(QUEUE_NAMES.REPORTS);
@@ -299,7 +300,7 @@ cbKpiRouter.get("/compensation/payslips", checkPermission("compensation.read"), 
   return context.json(successResponse(payslips));
 });
 
-cbKpiRouter.post("/compensation/payroll/export", checkPermission("payroll.export"), async (context) => {
+cbKpiRouter.post("/compensation/payroll/export", reportRateLimitMiddleware(), checkPermission("payroll.export"), async (context) => {
   const body = await context.req.json();
   const parsed = payrollExportSchema.safeParse(body);
 
