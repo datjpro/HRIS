@@ -4,7 +4,7 @@
 - Task: Lam lai toan bo giao dien Web de test theo `docs/UI/code.html`
 - Branch goc: `dev`
 - Branch lam viec: `feat/ui-foundation-app-shell`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 
 ## Muc tieu
 - Xoa triet de mindset placeholder tren route dashboard va route con.
@@ -27,21 +27,21 @@
 ## Phan viec
 
 ### P1 - Tao plan va khoa workflow
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Co file plan moi theo ngay hien tai va chia P1..P5 ro rang.
 - Commit map:
   - `docs(web): add full ui rebuild task plan`
 
 ### P2 - Rebuild shell va dashboard goc
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - `/me`, `/manager`, `/hr`, `/admin` dung shell + dashboard pattern sat `docs/UI/code.html`.
 - Commit map:
   - `feat(web): align dashboard shell and home to ui docs`
 
 ### P3 - Rebuild toan bo route con business
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Khong con page nao render `ModulePlaceholder`.
   - Tat ca route con dung layout card/table/quick links cung nguyen tac visual voi dashboard.
@@ -49,7 +49,7 @@
   - `feat(web): rebuild dashboard subpages with real ui patterns`
 
 ### P4 - Polish style va responsive baseline
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Spacing, typography, border, state hover/focus dong bo.
   - Mobile baseline khong vo layout.
@@ -57,7 +57,7 @@
   - `chore(web): polish ui docs fidelity and responsive baseline`
 
 ### P5 - Validate va dong task
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - `bun run --cwd apps/web typecheck` pass.
   - Plan cap nhat `DONE` va map commit day du.
@@ -69,3 +69,12 @@
 - `IN PROGRESS`
 - `DONE`
 - `BLOCKED`
+
+## Ket qua validation
+- `bun run --cwd apps/web typecheck`: pass
+- `bun run --cwd apps/web lint`: pass
+
+## Commit map cap nhat
+- `e00e19e` - `docs(web): add full ui rebuild task plan` (P1)
+- `427267b` - `feat(web): rebuild dashboard subpages with ui docs patterns` (P2, P3, P4)
+- `chore(web): validate full web ui rebuild` (P5)
