@@ -4,7 +4,7 @@
 - Task: Hardening production cho backend HRIS
 - Branch goc: `dev`
 - Branch lam viec: `chore/production-hardening`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 
 ## Muc tieu
 - Chuan hoa migration + seed workflow.
@@ -22,7 +22,7 @@
   - `chore: add migration and seed workflow`
 
 ### P2 - Audit Logging & Rate Limit
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Co middleware request log co request-id.
   - Co rate limiting cho auth va payroll export APIs.
@@ -30,7 +30,7 @@
   - `feat: add audit logging and rate limiting`
 
 ### P3 - API Smoke Tests
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Co test script smoke check health/auth/protected routes.
   - Co huong dan chay test.
@@ -38,7 +38,7 @@
   - `test: add api smoke tests`
 
 ### P4 - Validation
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - bun install + prisma generate + build pass.
 - Commit map:
