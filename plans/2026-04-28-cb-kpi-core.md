@@ -4,7 +4,7 @@
 - Task: Xay dung backend C&B + KPI (salary band, KPI, payslip/payroll, export report)
 - Branch goc: `dev`
 - Branch lam viec: `feat/cb-kpi-core`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 
 ## Muc tieu
 - Quan ly Salary Band, KPI Metric/Result, Payslip.
