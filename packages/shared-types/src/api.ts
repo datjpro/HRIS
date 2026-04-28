@@ -229,3 +229,41 @@ export type RecruitmentJobPayload =
       departmentName: string;
     };
 
+export type OnboardingPlanDTO = {
+  id: string;
+  employeeProfileId: string;
+  applicationId?: string;
+  buddyUserId?: string;
+  template: string;
+  status: string;
+  startedAt?: string;
+  completedAt?: string;
+};
+
+export type OnboardingTaskDTO = {
+  id: string;
+  onboardingPlanId: string;
+  title: string;
+  description?: string;
+  phaseDay: number;
+  dueDate: string;
+  status: string;
+  completedAt?: string;
+};
+
+export type OnboardingPlanDetail = OnboardingPlanDTO & {
+  tasks: OnboardingTaskDTO[];
+};
+
+export type OnboardingTriggerDTO = {
+  applicationId: string;
+  buddyUserId?: string;
+};
+
+export type OnboardingJobPayload = {
+  employeeProfileId: string;
+  applicationId?: string;
+  buddyUserId?: string;
+  checklistTemplate: "30-60-90";
+};
+

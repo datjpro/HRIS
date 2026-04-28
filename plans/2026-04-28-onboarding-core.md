@@ -14,7 +14,7 @@
 ## Phan viec
 
 ### P1 - Schema & Shared Types
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Prisma schema co `OnboardingPlan`, `OnboardingTask`.
   - Shared types co DTO/response cho onboarding.
@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for onboarding`
 
 ### P2 - Onboarding API Trigger
-- Status: `TODO`
+- Status: `IN PROGRESS`
 - Success criteria:
   - API hire candidate/application.
   - API trigger onboarding va xem plan/task.
