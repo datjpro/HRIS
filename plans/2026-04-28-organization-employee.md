@@ -14,7 +14,7 @@
 ## Phan viec
 
 ### P1 - Schema & Shared Types
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Prisma schema co `Department`, `EmployeeProfile`, `Contract`.
   - Shared types co DTO/response cho department va employee directory.
@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for org and employee`
 
 ### P2 - Department API + Cache
-- Status: `TODO`
+- Status: `IN PROGRESS`
 - Success criteria:
   - CRUD Department cho HR/Admin.
   - Redis cache org tree cho read APIs.

@@ -63,3 +63,60 @@ export type JwtPayload = {
 
 export type AuthPayload = JwtPayload;
 
+export type DepartmentDTO = {
+  id: string;
+  code: string;
+  name: string;
+  description?: string;
+  parentId?: string;
+  managerUserId?: string;
+  isActive: boolean;
+};
+
+export type DepartmentTreeNode = DepartmentDTO & {
+  children: DepartmentTreeNode[];
+};
+
+export type DepartmentUpsertDTO = {
+  code: string;
+  name: string;
+  description?: string;
+  parentId?: string;
+  managerUserId?: string;
+  isActive?: boolean;
+};
+
+export type EmployeeDirectoryEntry = {
+  id: string;
+  employeeCode: string;
+  fullName: string;
+  email: string;
+  role: Role;
+  departmentId: string;
+  departmentName: string;
+  jobTitle: string;
+  managerId?: string;
+  employmentStatus: string;
+  baseSalary?: number;
+};
+
+export type ContractSummary = {
+  id: string;
+  contractType: string;
+  startDate: string;
+  endDate?: string;
+  baseSalary?: number;
+  salaryCurrency: string;
+  payrollCycle: string;
+  status: string;
+};
+
+export type EmployeeProfileDetail = EmployeeDirectoryEntry & {
+  dateOfBirth?: string;
+  phoneNumber?: string;
+  address?: string;
+  emergencyContactName?: string;
+  emergencyContactPhone?: string;
+  contracts: ContractSummary[];
+};
+
