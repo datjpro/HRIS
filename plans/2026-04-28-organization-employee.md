@@ -4,7 +4,7 @@
 - Task: Xay dung co cau phong ban va ho so nhan su (Org & Employee Core)
 - Branch goc: `dev`
 - Branch lam viec: `feat/organization-employee-core`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 
 ## Muc tieu
 - Quan ly Department, EmployeeProfile, Contract theo RBAC.
