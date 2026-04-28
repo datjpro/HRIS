@@ -91,7 +91,7 @@ Xay dung nen tang giao dien co the tai su dung cho toan bo `apps/web`, bao gom:
   - `feat(web): add UI theme foundation tokens`
 
 ### P2 - Core UI Components
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Muc tieu:
   - Dung bo components nen co style thong nhat.
 - Cong viec:

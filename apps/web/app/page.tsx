@@ -9,6 +9,7 @@ export default function HomePage() {
         <li><Link href="/me">Employee view</Link></li>
         <li><Link href="/manager">Manager view</Link></li>
         <li><Link href="/hr">HR view</Link></li>
+        <li><Link href="/ui-preview">UI preview</Link></li>
       </ul>
     </main>
   );
