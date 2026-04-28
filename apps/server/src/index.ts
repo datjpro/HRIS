@@ -2,6 +2,8 @@ import { Hono } from "hono";
 import { serve } from "bun";
 import type { AppBindings } from "./lib/app-bindings";
 import { authMiddleware } from "./middlewares/auth";
+import { authRateLimitMiddleware } from "./middlewares/rate-limit";
+import { requestAuditMiddleware } from "./middlewares/request-audit";
 import { adminRouter } from "./routes/admin";
 import { authRouter } from "./routes/auth";
 import { cbKpiRouter } from "./routes/cb-kpi";
@@ -15,7 +17,10 @@ import { recruitmentRouter } from "./routes/recruitment";
 
 const app = new Hono<AppBindings>();
 
+app.use("*", requestAuditMiddleware);
+
 app.route("/", healthRouter);
+app.use("/api/v1/auth/*", authRateLimitMiddleware());
 app.route("/api/v1/auth", authRouter);
 
 app.use("/api/v1/*", authMiddleware);

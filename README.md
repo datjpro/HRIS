@@ -28,6 +28,14 @@ Monorepo khoi tao cho he thong quan ly nhan su (HRIS) theo kien truc microservic
 cmd /c bun install
 ```
 
+## Database workflow
+```bash
+cmd /c bun run db:generate
+cmd /c bun run db:migrate
+cmd /c bun run db:seed
+cmd /c bun run db:deploy
+```
+
 ## Chay tung app
 ```bash
 cmd /c bun run dev:web
@@ -39,6 +47,13 @@ cmd /c bun run dev:worker
 ```bash
 cmd /c bun run build
 ```
+
+## API smoke test
+```bash
+cmd /c bun run test:smoke
+```
+
+Can set custom API URL via `API_BASE_URL`.
 
 ## Ghi chu Windows
 - Neu PowerShell chan `bun.ps1`, dung `cmd /c bun ...`.
