@@ -22,6 +22,7 @@ model User {
   requestedHiringRequests HiringRequest[] @relation("HiringRequestRequester")
   managedHiringRequests HiringRequest[] @relation("HiringRequestManager")
   interviews Interview[] @relation("InterviewInterviewer")
+  buddyOnboardingPlans OnboardingPlan[] @relation("OnboardingBuddy")
   accounts    Account[]
   refreshTokens RefreshToken[]
   createdAt   DateTime @default(now())
@@ -62,6 +63,7 @@ model EmployeeProfile {
   emergencyContactName String?
   emergencyContactPhone String?
   contracts       Contract[]
+  onboardingPlans OnboardingPlan[]
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 
@@ -167,6 +169,7 @@ model Application {
   score            Float?
   notes            String?
   interviews       Interview[]
+  onboardingPlan   OnboardingPlan?
   createdAt        DateTime      @default(now())
   updatedAt        DateTime      @updatedAt
 
@@ -189,5 +192,42 @@ model Interview {
 
   @@index([applicationId])
   @@index([interviewerId])
+}
+
+model OnboardingPlan {
+  id                 String          @id @default(cuid())
+  employeeProfileId  String
+  employeeProfile    EmployeeProfile @relation(fields: [employeeProfileId], references: [id], onDelete: Cascade)
+  applicationId      String?         @unique
+  application        Application?    @relation(fields: [applicationId], references: [id], onDelete: SetNull)
+  buddyUserId        String?
+  buddyUser          User?           @relation("OnboardingBuddy", fields: [buddyUserId], references: [id])
+  template           String          @default("30-60-90")
+  status             String          @default("PENDING")
+  startedAt          DateTime?
+  completedAt        DateTime?
+  tasks              OnboardingTask[]
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+
+  @@index([employeeProfileId])
+  @@index([buddyUserId])
+}
+
+model OnboardingTask {
+  id               String         @id @default(cuid())
+  onboardingPlanId String
+  onboardingPlan   OnboardingPlan @relation(fields: [onboardingPlanId], references: [id], onDelete: Cascade)
+  title            String
+  description      String?
+  phaseDay         Int
+  dueDate          DateTime
+  status           String         @default("TODO")
+  completedAt      DateTime?
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  @@index([onboardingPlanId])
+  @@index([phaseDay])
 }
 

@@ -10,6 +10,8 @@ export const PERMISSIONS = [
   "recruitment.candidate.read",
   "recruitment.candidate.write",
   "recruitment.interview.write",
+  "onboarding.read",
+  "onboarding.write",
   "admin.users.read",
   "admin.system.manage"
 ] as const;

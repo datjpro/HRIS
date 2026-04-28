@@ -7,6 +7,7 @@
     "declarationMap": true,
     "types": ["bun-types"],
     "paths": {
+      "@hris/db": ["../../packages/db/src/index.ts"],
       "@hris/shared-types": ["../../packages/shared-types/src/index.ts"],
       "@hris/redis": ["../../packages/redis/src/index.ts"]
     }

@@ -1,11 +1,12 @@
 import type { Permission, Role } from "@hris/shared-types";
 
 const rolePermissionMap: Record<Role, Permission[]> = {
-  EMPLOYEE: ["profile.read.self", "department.read"],
+  EMPLOYEE: ["profile.read.self", "department.read", "onboarding.read"],
   MANAGER: [
     "profile.read.self",
     "profile.read.team",
     "department.read",
+    "onboarding.read",
     "recruitment.request.read"
   ],
   HR: [
@@ -20,6 +21,8 @@ const rolePermissionMap: Record<Role, Permission[]> = {
     "recruitment.candidate.read",
     "recruitment.candidate.write",
     "recruitment.interview.write",
+    "onboarding.read",
+    "onboarding.write",
     "admin.users.read"
   ],
   ADMIN: [
@@ -34,6 +37,8 @@ const rolePermissionMap: Record<Role, Permission[]> = {
     "recruitment.candidate.read",
     "recruitment.candidate.write",
     "recruitment.interview.write",
+    "onboarding.read",
+    "onboarding.write",
     "admin.users.read",
     "admin.system.manage"
   ]
