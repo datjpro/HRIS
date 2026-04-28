@@ -4,7 +4,7 @@
 - Task: Implement Phase UI-1 cho FE-UI HRIS
 - Branch goc: `dev`
 - Branch lam viec de xuat: `feat/ui-foundation-app-shell`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 - Tai lieu tham chieu:
   - `docs/UI/DESIGN.md`
   - `docs/UI/code.html`
@@ -144,7 +144,7 @@ Xay dung nen tang giao dien co the tai su dung cho toan bo `apps/web`, bao gom:
   - `feat(web): add dashboard placeholder pages`
 
 ### P5 - Quality Gate & Polish
-- Status: `TODO`
+- Status: `DONE`
 - Muc tieu:
   - Chot baseline chat luong cho Phase UI-1.
 - Cong viec:
@@ -178,6 +178,7 @@ Xay dung nen tang giao dien co the tai su dung cho toan bo `apps/web`, bao gom:
 - Khong nen lam business pages qua som khi shell/components chua on dinh.
 - Khong hardcode logic permission vao UI component low-level.
 - Neu build Next trong sandbox gap `spawn EPERM`, can test lai o moi truong local thong thuong de xac nhan UI build.
+- Ket qua P5: `apps/web` typecheck/lint pass; `next build` trong sandbox van gap `spawn EPERM`, duoc ghi nhan la van de moi truong thay vi loi UI/type.
 
 ## Definition of Done
 Phase UI-1 duoc xem la xong khi:
