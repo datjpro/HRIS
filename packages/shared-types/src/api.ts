@@ -120,3 +120,112 @@ export type EmployeeProfileDetail = EmployeeDirectoryEntry & {
   contracts: ContractSummary[];
 };
 
+export type HiringRequestDTO = {
+  id: string;
+  requestCode: string;
+  title: string;
+  description?: string;
+  departmentId: string;
+  requesterId: string;
+  hiringManagerId?: string;
+  employmentType: string;
+  headcount: number;
+  priority: string;
+  status: string;
+  approvalNote?: string;
+  approvedAt?: string;
+  requestedAt: string;
+  slaDeadlineAt: string;
+};
+
+export type HiringRequestCreateDTO = {
+  title: string;
+  description?: string;
+  departmentId: string;
+  hiringManagerId?: string;
+  employmentType: string;
+  headcount: number;
+  priority?: string;
+};
+
+export type HiringRequestApprovalDTO = {
+  status: "APPROVED" | "REJECTED";
+  approvalNote?: string;
+};
+
+export type CandidateDTO = {
+  id: string;
+  fullName: string;
+  email: string;
+  phoneNumber?: string;
+  source?: string;
+  currentCompany?: string;
+  notes?: string;
+  status: string;
+  appliedAt: string;
+};
+
+export type CandidateCreateDTO = {
+  fullName: string;
+  email: string;
+  phoneNumber?: string;
+  source?: string;
+  currentCompany?: string;
+  notes?: string;
+};
+
+export type ApplicationDTO = {
+  id: string;
+  hiringRequestId: string;
+  candidateId: string;
+  status: string;
+  score?: number;
+  notes?: string;
+};
+
+export type ApplicationCreateDTO = {
+  hiringRequestId: string;
+  candidateId: string;
+  notes?: string;
+};
+
+export type InterviewDTO = {
+  id: string;
+  applicationId: string;
+  interviewerId?: string;
+  roundLabel: string;
+  scheduledAt: string;
+  result: string;
+  feedback?: string;
+};
+
+export type InterviewCreateDTO = {
+  applicationId: string;
+  interviewerId?: string;
+  roundLabel: string;
+  scheduledAt: string;
+};
+
+export type RecruitmentJobPayload =
+  | {
+      type: "send-interview-invitation";
+      interviewId: string;
+      candidateEmail: string;
+      candidateName: string;
+      roundLabel: string;
+      scheduledAt: string;
+    }
+  | {
+      type: "send-candidate-rejection";
+      applicationId: string;
+      candidateEmail: string;
+      candidateName: string;
+      reason?: string;
+    }
+  | {
+      type: "sla-alert";
+      hiringRequestId: string;
+      requestCode: string;
+      departmentName: string;
+    };
+

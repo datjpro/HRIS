@@ -14,7 +14,7 @@
 ## Phan viec
 
 ### P1 - Schema & Shared Types
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Prisma schema co `HiringRequest`, `Candidate`, `Application`, `Interview`.
   - Shared types co DTO/response cho recruitment.
@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for recruitment`
 
 ### P2 - Recruitment API
-- Status: `TODO`
+- Status: `IN PROGRESS`
 - Success criteria:
   - API tao hiring request, approve/reject request.
   - API CRUD candidate/application/interview co RBAC.
