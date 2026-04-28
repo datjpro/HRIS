@@ -4,7 +4,7 @@
 - Task: Xay dung backend onboarding core (trigger hired -> tao checklist 30-60-90 -> gan buddy)
 - Branch goc: `dev`
 - Branch lam viec: `feat/onboarding-core`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 
 ## Muc tieu
 - Khi candidate/application duoc hire, system tao onboarding plan tu dong.
@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for onboarding`
 
 ### P2 - Onboarding API Trigger
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - API hire candidate/application.
   - API trigger onboarding va xem plan/task.
@@ -31,7 +31,7 @@
   - `feat: implement onboarding api and trigger flow`
 
 ### P3 - Worker Checklist Generation
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Worker tao checklist 30-60-90.
   - Auto assign buddy neu co manager/direct report phu hop.
@@ -39,7 +39,7 @@
   - `feat: implement onboarding worker checklist generation`
 
 ### P4 - Validation
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Prisma client generate thanh cong.
   - Build monorepo pass.
