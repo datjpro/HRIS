@@ -4,7 +4,6 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import type { ReactNode } from "react";
 import { cn } from "../../lib/cn";
-import { Button } from "../ui";
 
 type NavigationItem = {
   href: string;
@@ -12,27 +11,18 @@ type NavigationItem = {
   icon: string;
 };
 
-const navigationItems: NavigationItem[] = [
-  {
-    href: "/me",
-    label: "My Space",
-    icon: "dashboard"
-  },
-  {
-    href: "/manager",
-    label: "Manager",
-    icon: "group"
-  },
-  {
-    href: "/hr",
-    label: "HR",
-    icon: "payments"
-  },
-  {
-    href: "/admin",
-    label: "Admin",
-    icon: "trending_up"
-  }
+const mainNavigation: NavigationItem[] = [
+  { href: "/me", label: "Dashboard", icon: "dashboard" },
+  { href: "/hr/employees", label: "Employees", icon: "group" },
+  { href: "/hr/compensation/salary-bands", label: "Payroll", icon: "payments" },
+  { href: "/me/onboarding", label: "Time & Attendance", icon: "schedule" },
+  { href: "/me/kpi", label: "Performance", icon: "trending_up" },
+  { href: "/hr/onboarding", label: "Benefits", icon: "medical_services" }
+];
+
+const footerNavigation: NavigationItem[] = [
+  { href: "/admin", label: "Settings", icon: "settings" },
+  { href: "/ui-preview", label: "Support", icon: "help_outline" }
 ];
 
 type DashboardShellProps = {
@@ -43,71 +33,86 @@ export function DashboardShell({ children }: DashboardShellProps) {
   const pathname = usePathname();
 
   return (
-    <div className="fodel-shell">
-      <aside className="fodel-sidebar">
-        <div className="fodel-sidebar__brand">
-          <div className="fodel-sidebar__brand-mark">P</div>
-          <div>
-            <div className="fodel-sidebar__brand-title">PulseHR</div>
-            <div className="fodel-sidebar__brand-copy">People Operations Platform</div>
+    <div className="codeui-shell">
+      <aside className="codeui-sidebar">
+        <div className="codeui-sidebar__brand">
+          <div className="codeui-sidebar__brand-mark">
+            <span className="material-symbols-outlined codeui-sidebar__brand-icon">monitor_heart</span>
+          </div>
+          <div className="codeui-sidebar__brand-copy">
+            <span className="codeui-sidebar__brand-title">PulseHR</span>
+            <span className="codeui-sidebar__brand-subtitle">Enterprise Admin</span>
           </div>
         </div>
 
-        <nav className="fodel-sidebar__nav" aria-label="Dashboard navigation">
-          {navigationItems.map((item) => {
+        <button className="codeui-sidebar__cta" type="button">
+          <span className="material-symbols-outlined">add</span>
+          <span>Quick Action</span>
+        </button>
+
+        <nav className="codeui-sidebar__nav" aria-label="Primary navigation">
+          {mainNavigation.map((item) => {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
             return (
-              <div key={item.href}>
-                <Link
-                  href={item.href}
-                  className={cn("fodel-sidebar__nav-item", isActive && "fodel-sidebar__nav-item--active")}
-                >
-                  <span className="material-symbols-outlined fodel-icon">{item.icon}</span>
-                  <span>{item.label}</span>
-                </Link>
-
-              </div>
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn("codeui-sidebar__nav-item", isActive && "codeui-sidebar__nav-item--active")}
+              >
+                <span className="material-symbols-outlined">{item.icon}</span>
+                <span>{item.label}</span>
+              </Link>
             );
           })}
         </nav>
 
-        <div className="fodel-sidebar__footer">
-          <Link href="/ui-preview" className="fodel-sidebar__footer-link">
-            <Button variant="secondary" size="sm">Review UI</Button>
-          </Link>
+        <div className="codeui-sidebar__footer">
+          {footerNavigation.map((item) => {
+            const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
+
+            return (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn("codeui-sidebar__nav-item", isActive && "codeui-sidebar__nav-item--active")}
+              >
+                <span className="material-symbols-outlined">{item.icon}</span>
+                <span>{item.label}</span>
+              </Link>
+            );
+          })}
         </div>
       </aside>
 
-      <div className="fodel-main">
-        <header className="fodel-topbar">
-          <div className="fodel-topbar__breadcrumbs">
-            <span>PulseHR</span>
-            <span className="material-symbols-outlined fodel-topbar__crumb-icon">chevron_right</span>
-            <span className="fodel-topbar__crumb-current">Dashboard</span>
+      <div className="codeui-workspace">
+        <header className="codeui-topbar">
+          <div className="codeui-topbar__breadcrumbs">
+            <span>Pages</span>
+            <span className="material-symbols-outlined">chevron_right</span>
+            <span className="codeui-topbar__breadcrumbs-current">Dashboard</span>
           </div>
 
-          <div className="fodel-topbar__search">
-            <span className="material-symbols-outlined fodel-topbar__search-icon">search</span>
-            <input type="text" placeholder="Search employees, documents, settings... (Cmd+K)" />
-          </div>
+          <label className="codeui-topbar__search" aria-label="Search workspace">
+            <span className="material-symbols-outlined">search</span>
+            <input type="text" placeholder="Search employees, payroll, requests..." />
+          </label>
 
-          <div className="fodel-topbar__actions">
-            <button className="fodel-icon-button" type="button">
+          <div className="codeui-topbar__actions">
+            <button className="codeui-topbar__icon-button" type="button" aria-label="Notifications">
               <span className="material-symbols-outlined">notifications</span>
-              <span className="fodel-icon-button__dot" />
             </button>
-            <button className="fodel-icon-button" type="button">
-              <span className="material-symbols-outlined">chat_bubble_outline</span>
+            <button className="codeui-topbar__icon-button" type="button" aria-label="Messages">
+              <span className="material-symbols-outlined">chat</span>
             </button>
-            <button className="fodel-topbar__help" type="button">Help</button>
-            <button className="fodel-topbar__avatar" type="button">AD</button>
+            <button className="codeui-topbar__help" type="button">Help</button>
+            <button className="codeui-topbar__avatar" type="button" aria-label="Admin profile">
+              <span className="material-symbols-outlined">person</span>
+            </button>
           </div>
         </header>
 
-        <main className="fodel-content">
-          <div className="fodel-content__container">{children}</div>
-        </main>
+        <main className="codeui-content">{children}</main>
       </div>
     </div>
   );
