@@ -4,6 +4,8 @@ import type { AppBindings } from "./lib/app-bindings";
 import { authMiddleware } from "./middlewares/auth";
 import { adminRouter } from "./routes/admin";
 import { authRouter } from "./routes/auth";
+import { departmentsRouter } from "./routes/departments";
+import { employeesRouter } from "./routes/employees";
 import { healthRouter } from "./routes/health";
 import { meRouter } from "./routes/me";
 
@@ -13,6 +15,8 @@ app.route("/", healthRouter);
 app.route("/api/v1/auth", authRouter);
 
 app.use("/api/v1/*", authMiddleware);
+app.route("/api/v1", departmentsRouter);
+app.route("/api/v1", employeesRouter);
 app.route("/api/v1", meRouter);
 app.route("/api/v1", adminRouter);
 
