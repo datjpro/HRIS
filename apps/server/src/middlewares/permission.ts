@@ -1,12 +1,13 @@
 import type { MiddlewareHandler } from "hono";
-import type { Role } from "@hris/shared-types";
+import type { Permission } from "@hris/shared-types";
 import type { AppBindings } from "../lib/app-bindings";
+import { hasPermission } from "../lib/permissions";
 
-export function roleMiddleware(allowedRoles: Role[]): MiddlewareHandler<AppBindings> {
+export function checkPermission(permission: Permission): MiddlewareHandler<AppBindings> {
   return async (context, next) => {
-    const role = context.var.user.role as Role | undefined;
+    const user = context.var.user;
 
-    if (!role || !allowedRoles.includes(role)) {
+    if (!hasPermission(user.role, permission)) {
       return context.json(
         {
           success: false,
@@ -22,3 +23,4 @@ export function roleMiddleware(allowedRoles: Role[]): MiddlewareHandler<AppBindi
     await next();
   };
 }
+

@@ -32,3 +32,34 @@ export type EmployeeProfile = {
   baseSalary?: number;
 };
 
+export type AuthTokenResponse = {
+  accessToken: string;
+  refreshToken: string;
+  expiresIn: number;
+};
+
+export type JWTSchema = AuthTokenResponse;
+
+export type LoginDTO = {
+  email: string;
+  password?: string; // Optional if using external auth
+};
+
+export type RegisterDTO = {
+  email: string;
+  fullName: string;
+  department: string;
+  role: Role;
+  password?: string;
+};
+
+export type JwtPayload = {
+  sub: string; // userId
+  email: string;
+  role: Role;
+  iat: number;
+  exp: number;
+};
+
+export type AuthPayload = JwtPayload;
+
