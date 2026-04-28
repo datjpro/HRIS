@@ -49,11 +49,11 @@ export async function createRefreshToken(input: JwtClaimsInput): Promise<{ token
 }
 
 export async function verifyAccessToken(token: string): Promise<JwtPayload> {
-  return (await verify(token, accessSecret)) as JwtPayload;
+  return (await verify(token, accessSecret, "HS256")) as JwtPayload;
 }
 
 export async function verifyRefreshToken(token: string): Promise<JwtPayload> {
-  return (await verify(token, refreshSecret)) as JwtPayload;
+  return (await verify(token, refreshSecret, "HS256")) as JwtPayload;
 }
 
 export function getAccessExpiresInSeconds(): number {
