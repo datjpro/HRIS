@@ -1,29 +1,26 @@
-import { Card, CardContent, CardHeader, CardTitle, PageHeader, StatCard } from "../../../components/ui";
+import { ModulePlaceholder } from "../../../components/data-display/module-placeholder";
 
 export default function HrDashboardPage() {
   return (
-    <div>
-      <PageHeader
-        eyebrow="HR"
-        title="HR Dashboard"
-        description="Entry point for company-wide people operations, compensation, recruitment and analytics."
-      />
-
-      <div className="ui-preview-grid">
-        <StatCard title="Headcount" value="248" helperText="Across all active departments" trendLabel="+12 this month" trendVariant="success" />
-        <StatCard title="Open roles" value="16" helperText="Across all hiring requests" trendLabel="5 urgent" trendVariant="warning" />
-        <StatCard title="Onboarding plans" value="07" helperText="Employees currently onboarding" trendLabel="In progress" trendVariant="info" />
-      </div>
-
-      <Card className="ui-preview-section">
-        <CardHeader>
-          <CardTitle>HR workspace</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p>This shell is ready for departments, directory, recruitment, onboarding, compensation and analytics modules.</p>
-        </CardContent>
-      </Card>
-    </div>
+    <ModulePlaceholder
+      eyebrow="HR"
+      title="Good Morning, Admin"
+      description="Here is what's happening across your organization today."
+      stats={[
+        { title: "Total Headcount", value: "1,248", helperText: "this month", trendLabel: "12 new" },
+        { title: "Pending Approvals", value: "24", helperText: "Time Off, Expenses", trendLabel: "Needs action" },
+        { title: "Open Roles", value: "16", helperText: "Across active hiring requests", trendLabel: "5 urgent" }
+      ]}
+      bullets={[
+        "Monitor departments, directory and organization health",
+        "Track recruitment, onboarding and compensation workflows",
+        "Access analytics and culture operations from one shared dashboard"
+      ]}
+      quickLinks={[{ href: "/hr/departments", label: "Departments" }, { href: "/hr/employees", label: "Employee Directory" }, { href: "/hr/analytics", label: "Analytics" }]}
+      emptyTitle="New Performance Module"
+      emptyDescription="Check out the updated review cycle tools."
+      reviewLabel="HR dashboard"
+    />
   );
 }
 

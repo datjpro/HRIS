@@ -1,26 +1,6 @@
 import Link from "next/link";
 import type { ReactNode } from "react";
-import {
-  Badge,
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  EmptyState,
-  PageHeader,
-  SectionHeader,
-  Skeleton,
-  StatCard,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableHeaderCell,
-  TableRow,
-  Tabs
-} from "../ui";
+import { Button } from "../ui";
 
 type QuickLink = {
   href: string;
@@ -59,112 +39,127 @@ export function ModulePlaceholder({
   actions
 }: ModulePlaceholderProps) {
   return (
-    <div>
-      <PageHeader eyebrow={eyebrow} title={title} description={description} actions={actions} />
+    <div className="fodel-page">
+      <div className="fodel-page__header">
+        <div>
+          <h1 className="fodel-page__title">{title}</h1>
+          <p className="fodel-page__description">{description}</p>
+        </div>
+        <div className="fodel-page__header-actions">
+          {actions ?? (
+            <>
+              <button className="fodel-secondary-button" type="button">
+                <span className="material-symbols-outlined">download</span>
+                Export Report
+              </button>
+              <button className="fodel-primary-button" type="button">
+                <span className="material-symbols-outlined">person_add</span>
+                Primary Action
+              </button>
+            </>
+          )}
+        </div>
+      </div>
 
-      <div className="ui-preview-grid">
+      <div className="fodel-kpi-grid">
         {stats.map((stat) => (
-          <StatCard
-            key={stat.title}
-            title={stat.title}
-            value={stat.value}
-            helperText={stat.helperText}
-            trendLabel={stat.trendLabel}
-            trendVariant={stat.trendVariant}
-          />
+          <div key={stat.title} className="fodel-kpi-card">
+            <div className="fodel-kpi-card__top">
+              <span className="fodel-kpi-card__label">{stat.title}</span>
+              <div className="fodel-kpi-card__icon">
+                <span className="material-symbols-outlined">monitoring</span>
+              </div>
+            </div>
+            <div>
+              <div className="fodel-kpi-card__value">{stat.value}</div>
+              <div className="fodel-kpi-card__meta">
+                {stat.trendLabel ? <span className="fodel-kpi-card__trend">{stat.trendLabel}</span> : null}
+                <span>{stat.helperText}</span>
+              </div>
+            </div>
+          </div>
         ))}
       </div>
 
-      <section className="ui-preview-section">
-        <SectionHeader
-          title="Module placeholder"
-          description="This route exists to review shell, hierarchy, card patterns, tables, empty states and navigation before data integration."
-          actions={<Badge variant="info">{reviewLabel}</Badge>}
-        />
-
-        <div className="ui-preview-split">
-          <Card>
-            <CardHeader>
-              <CardTitle>Planned content</CardTitle>
-            </CardHeader>
-            <CardContent className="ui-preview-stack">
-              <ul className="ui-bullet-list">
+      <div className="fodel-bento-grid">
+        <div className="fodel-main-widget fodel-main-widget--wide">
+          <div className="fodel-widget__header">
+            <div>
+              <h3 className="fodel-widget__title">{eyebrow} Workspace</h3>
+              <p className="fodel-widget__copy">{reviewLabel}. This module now uses the shared dashboard composition from `docs/UI/code.html`.</p>
+            </div>
+            <button className="fodel-widget__link" type="button">View All</button>
+          </div>
+          <div className="fodel-list-shell">
+            <ul className="ui-bullet-list">
                 {bullets.map((bullet) => (
                   <li key={bullet}>{bullet}</li>
                 ))}
               </ul>
-
-              {quickLinks.length ? (
-                <div className="ui-quick-links">
-                  {quickLinks.map((link) => (
-                    <Link key={link.href} href={link.href} className="ui-quick-link">
-                      <span>{link.label}</span>
-                      <span>→</span>
-                    </Link>
-                  ))}
-                </div>
-              ) : null}
-            </CardContent>
-          </Card>
-
-          <Card>
-            <CardHeader>
-              <CardTitle>UI states</CardTitle>
-            </CardHeader>
-            <CardContent className="ui-preview-stack">
-              <Skeleton style={{ height: 18, width: "45%" }} />
-              <Skeleton style={{ height: 14, width: "80%" }} />
-              <EmptyState title={emptyTitle} description={emptyDescription} action={<Button variant="secondary">Primary action later</Button>} />
-            </CardContent>
-          </Card>
+          </div>
         </div>
-      </section>
 
-      <section className="ui-preview-section">
-        <SectionHeader title="List pattern preview" description="Base table shell and tabs preview for future business data." />
-        <Tabs
-          items={[
-            {
-              label: "Overview",
-              value: "overview",
-              content: <p>Use summary cards and quick actions at the top of each workspace.</p>
-            },
-            {
-              label: "List",
-              value: "list",
-              content: (
-                <TableContainer>
-                  <Table>
-                    <TableHead>
-                      <TableRow>
-                        <TableHeaderCell>Name</TableHeaderCell>
-                        <TableHeaderCell>Owner</TableHeaderCell>
-                        <TableHeaderCell>Status</TableHeaderCell>
-                      </TableRow>
-                    </TableHead>
-                    <TableBody>
-                      <TableRow>
-                        <TableCell>{title}</TableCell>
-                        <TableCell>HRIS Team</TableCell>
-                        <TableCell>
-                          <Badge variant="info">Placeholder</Badge>
-                        </TableCell>
-                      </TableRow>
-                      <TableRow>
-                        <TableCell>Connected page shell</TableCell>
-                        <TableCell>UI Foundation</TableCell>
-                        <TableCell>
-                          <Badge variant="success">Ready</Badge>
-                        </TableCell>
-                      </TableRow>
-                    </TableBody>
-                  </Table>
-                </TableContainer>
-              )
-            }
-          ]}
-        />
-      </section>
+        <div className="fodel-main-widget">
+          <div className="fodel-widget__header">
+            <div>
+              <h3 className="fodel-widget__title">Recent Onboarding</h3>
+              <p className="fodel-widget__copy">Preview table pattern for operational workflows.</p>
+            </div>
+            <button className="fodel-widget__link" type="button">View All</button>
+          </div>
+          <div className="fodel-table-shell">
+            <div className="fodel-table-shell__head">
+              <div className="fodel-table-shell__span-2">Employee</div>
+              <div>Role</div>
+              <div className="fodel-table-shell__right">Status</div>
+            </div>
+            {[
+              ["Jane Doe", "jane.doe@company.com", "Senior Engineer", "In Progress (60%)"],
+              ["Alex Smith", "alex.smith@company.com", "Product Manager", "Completed"],
+              [title, emptyDescription, "Workspace module", emptyTitle]
+            ].map((row) => (
+              <div key={row[0]} className="fodel-table-shell__row">
+                <div className="fodel-table-shell__span-2">
+                  <div className="fodel-table-shell__avatar">{row[0].slice(0, 2).toUpperCase()}</div>
+                  <div>
+                    <div className="fodel-table-shell__name">{row[0]}</div>
+                    <div className="fodel-table-shell__subcopy">{row[1]}</div>
+                  </div>
+                </div>
+                <div className="fodel-table-shell__subcopy">{row[2]}</div>
+                <div className="fodel-table-shell__right">
+                  <span className="fodel-table-shell__badge">{row[3]}</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="fodel-side-widget">
+          <h3 className="fodel-widget__title">Quick Links</h3>
+          <div className="fodel-side-widget__links">
+            {quickLinks.map((link) => (
+              <Link key={link.href} href={link.href} className="fodel-side-widget__link">
+                <div className="fodel-side-widget__link-left">
+                  <span className="material-symbols-outlined fodel-side-widget__link-icon">arrow_outward</span>
+                  <span>{link.label}</span>
+                </div>
+                <span className="material-symbols-outlined fodel-side-widget__link-arrow">arrow_forward</span>
+              </Link>
+            ))}
+            <div className="fodel-promo-card">
+              <div className="fodel-promo-card__orb fodel-promo-card__orb--top" />
+              <div className="fodel-promo-card__orb fodel-promo-card__orb--bottom" />
+              <div className="fodel-promo-card__content">
+                <span className="material-symbols-outlined fodel-promo-card__icon">new_releases</span>
+                <h4>{emptyTitle}</h4>
+                <p>{emptyDescription}</p>
+                <Button variant="ghost" size="sm">Learn More</Button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
