@@ -18,6 +18,12 @@ export const PERMISSIONS = [
   "kpi.write",
   "payroll.generate",
   "payroll.export",
+  "learning.read",
+  "learning.write",
+  "idp.read",
+  "idp.write",
+  "culture.enps.submit",
+  "analytics.read",
   "admin.users.read",
   "admin.system.manage"
 ] as const;

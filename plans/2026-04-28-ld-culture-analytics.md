@@ -14,7 +14,7 @@
 ## Phan viec
 
 ### P1 - Schema & Shared Types
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Prisma schema co `TrainingCourse`, `TrainingEnrollment`, `IdpPlan`, `EnpsSurvey`.
   - Shared types co DTO/response cho L&D, Culture, Analytics.
@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for ld culture analytics`
 
 ### P2 - API Training / IDP / eNPS / Analytics
-- Status: `TODO`
+- Status: `IN PROGRESS`
 - Success criteria:
   - API CRUD training courses va enrollments.
   - API IDP management.
