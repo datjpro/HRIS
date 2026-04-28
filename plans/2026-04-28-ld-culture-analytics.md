@@ -4,7 +4,7 @@
 - Task: Xay dung backend L&D, Culture va Analytics
 - Branch goc: `dev`
 - Branch lam viec: `feat/ld-culture-analytics`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 
 ## Muc tieu
 - Quan ly Training Course, IDP, eNPS an danh va dashboard analytics.
