@@ -109,7 +109,7 @@ Xay dung nen tang giao dien co the tai su dung cho toan bo `apps/web`, bao gom:
   - `feat(web): add core UI component library`
 
 ### P3 - Dashboard App Shell
-- Status: `TODO`
+- Status: `DONE`
 - Muc tieu:
   - Tao layout dashboard dung design docs.
 - Cong viec:
