@@ -17,6 +17,7 @@
     "db:deploy": "bun --cwd packages/db run db:deploy",
     "db:seed": "bun --cwd packages/db run db:seed",
     "db:reset": "bun --cwd packages/db run db:reset",
+    "test:smoke": "bun run scripts/api-smoke.ts",
     "typecheck": "turbo run typecheck",
     "lint": "turbo run lint"
   },

@@ -48,6 +48,13 @@ cmd /c bun run dev:worker
 cmd /c bun run build
 ```
 
+## API smoke test
+```bash
+cmd /c bun run test:smoke
+```
+
+Can set custom API URL via `API_BASE_URL`.
+
 ## Ghi chu Windows
 - Neu PowerShell chan `bun.ps1`, dung `cmd /c bun ...`.
 - Khong dung `npm` hoac `yarn` cho workspace nay.
