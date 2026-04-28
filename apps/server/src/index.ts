@@ -1,13 +1,16 @@
 import { Hono } from "hono";
 import { serve } from "bun";
+import type { AppBindings } from "./lib/app-bindings";
 import { authMiddleware } from "./middlewares/auth";
 import { adminRouter } from "./routes/admin";
+import { authRouter } from "./routes/auth";
 import { healthRouter } from "./routes/health";
 import { meRouter } from "./routes/me";
 
-const app = new Hono();
+const app = new Hono<AppBindings>();
 
 app.route("/", healthRouter);
+app.route("/api/v1/auth", authRouter);
 
 app.use("/api/v1/*", authMiddleware);
 app.route("/api/v1", meRouter);

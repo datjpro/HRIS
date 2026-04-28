@@ -38,6 +38,8 @@ export type AuthTokenResponse = {
   expiresIn: number;
 };
 
+export type JWTSchema = AuthTokenResponse;
+
 export type LoginDTO = {
   email: string;
   password?: string; // Optional if using external auth
@@ -58,4 +60,6 @@ export type JwtPayload = {
   iat: number;
   exp: number;
 };
+
+export type AuthPayload = JwtPayload;
 
