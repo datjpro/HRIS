@@ -41,6 +41,7 @@
       "name": "@hris/worker",
       "version": "0.1.0",
       "dependencies": {
+        "@hris/db": "workspace:*",
         "@hris/redis": "workspace:*",
         "@hris/shared-types": "workspace:*",
       },
