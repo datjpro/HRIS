@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for cb and kpi`
 
 ### P2 - API Salary Band / KPI / Payroll
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - CRUD Salary Band.
   - API KPI metrics/results.
@@ -31,7 +31,7 @@
   - `feat: implement cb and kpi apis`
 
 ### P3 - Cache & Worker Export
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Redis cache salary band.
   - Worker xu ly export payroll report.
@@ -39,7 +39,7 @@
   - `feat: implement salary band cache and payroll export worker`
 
 ### P4 - Validation
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Prisma generate thanh cong.
   - Build monorepo pass.
