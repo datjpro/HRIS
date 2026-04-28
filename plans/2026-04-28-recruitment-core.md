@@ -4,7 +4,7 @@
 - Task: Xay dung backend Recruitment core (Hiring Request -> Candidate -> Application -> Interview)
 - Branch goc: `dev`
 - Branch lam viec: `feat/recruitment-core`
-- Trang thai task: `IN PROGRESS`
+- Trang thai task: `DONE`
 
 ## Muc tieu
 - So hoa quy trinh recruitment tu hiring request den offer/hired.
