@@ -8,7 +8,9 @@ const rolePermissionMap: Record<Role, Permission[]> = {
     "department.read",
     "onboarding.read",
     "recruitment.request.read",
-    "kpi.read"
+    "kpi.read",
+    "learning.read",
+    "idp.read"
   ],
   HR: [
     "profile.read.self",
@@ -30,6 +32,12 @@ const rolePermissionMap: Record<Role, Permission[]> = {
     "kpi.write",
     "payroll.generate",
     "payroll.export",
+    "learning.read",
+    "learning.write",
+    "idp.read",
+    "idp.write",
+    "culture.enps.submit",
+    "analytics.read",
     "admin.users.read"
   ],
   ADMIN: [
@@ -52,6 +60,12 @@ const rolePermissionMap: Record<Role, Permission[]> = {
     "kpi.write",
     "payroll.generate",
     "payroll.export",
+    "learning.read",
+    "learning.write",
+    "idp.read",
+    "idp.write",
+    "culture.enps.submit",
+    "analytics.read",
     "admin.users.read",
     "admin.system.manage"
   ]

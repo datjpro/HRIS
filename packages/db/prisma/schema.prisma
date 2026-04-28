@@ -45,6 +45,7 @@ model Department {
   hiringRequests HiringRequest[]
   salaryBands   SalaryBand[]
   kpiMetrics    KpiMetric[]
+  trainingCourses TrainingCourse[]
   isActive      Boolean       @default(true)
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
@@ -65,10 +66,13 @@ model EmployeeProfile {
   address         String?
   emergencyContactName String?
   emergencyContactPhone String?
+  terminationDate DateTime?
   contracts       Contract[]
   onboardingPlans OnboardingPlan[]
   kpiResults      KpiResult[]
   payslips        Payslip[]
+  trainingEnrollments TrainingEnrollment[]
+  idpPlans        IdpPlan[]
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 
@@ -307,6 +311,68 @@ model Payslip {
   updatedAt          DateTime        @updatedAt
 
   @@unique([employeeProfileId, period])
+  @@index([period])
+}
+
+model TrainingCourse {
+  id                 String               @id @default(cuid())
+  departmentId       String?
+  department         Department?          @relation(fields: [departmentId], references: [id], onDelete: SetNull)
+  code               String               @unique
+  title              String
+  description        String?
+  provider           String?
+  commitmentMonths   Int                  @default(0)
+  startsAt           DateTime?
+  endsAt             DateTime?
+  status             String               @default("PLANNED")
+  enrollments        TrainingEnrollment[]
+  createdAt          DateTime             @default(now())
+  updatedAt          DateTime             @updatedAt
+}
+
+model TrainingEnrollment {
+  id                  String           @id @default(cuid())
+  trainingCourseId    String
+  trainingCourse      TrainingCourse   @relation(fields: [trainingCourseId], references: [id], onDelete: Cascade)
+  employeeProfileId   String
+  employeeProfile     EmployeeProfile  @relation(fields: [employeeProfileId], references: [id], onDelete: Cascade)
+  enrolledAt          DateTime         @default(now())
+  completedAt         DateTime?
+  commitmentEndDate   DateTime?
+  status              String           @default("ENROLLED")
+  violationFlaggedAt  DateTime?
+  createdAt           DateTime         @default(now())
+  updatedAt           DateTime         @updatedAt
+
+  @@unique([trainingCourseId, employeeProfileId])
+  @@index([commitmentEndDate])
+}
+
+model IdpPlan {
+  id                 String           @id @default(cuid())
+  employeeProfileId  String
+  employeeProfile    EmployeeProfile  @relation(fields: [employeeProfileId], references: [id], onDelete: Cascade)
+  title              String
+  objective          String
+  targetDate         DateTime?
+  status             String           @default("ACTIVE")
+  progressNote       String?
+  createdAt          DateTime         @default(now())
+  updatedAt          DateTime         @updatedAt
+
+  @@index([employeeProfileId])
+}
+
+model EnpsSurvey {
+  id             String    @id @default(cuid())
+  period         String
+  score          Int
+  comment        String?
+  departmentCode String?
+  submittedAt    DateTime  @default(now())
+  createdAt      DateTime  @default(now())
+
   @@index([period])
 }
 

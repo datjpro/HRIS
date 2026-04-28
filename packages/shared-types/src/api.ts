@@ -336,3 +336,58 @@ export type PayrollExportJobPayload = {
   requestedByUserId: string;
 };
 
+export type TrainingCourseDTO = {
+  id: string;
+  departmentId?: string;
+  code: string;
+  title: string;
+  description?: string;
+  provider?: string;
+  commitmentMonths: number;
+  startsAt?: string;
+  endsAt?: string;
+  status: string;
+};
+
+export type TrainingEnrollmentDTO = {
+  id: string;
+  trainingCourseId: string;
+  employeeProfileId: string;
+  enrolledAt: string;
+  completedAt?: string;
+  commitmentEndDate?: string;
+  status: string;
+  violationFlaggedAt?: string;
+};
+
+export type IdpPlanDTO = {
+  id: string;
+  employeeProfileId: string;
+  title: string;
+  objective: string;
+  targetDate?: string;
+  status: string;
+  progressNote?: string;
+};
+
+export type EnpsSurveyDTO = {
+  period: string;
+  score: number;
+  comment?: string;
+  departmentCode?: string;
+};
+
+export type HeadcountTrendPoint = {
+  period: string;
+  activeEmployees: number;
+};
+
+export type AnalyticsDashboardDTO = {
+  activeHeadcount: number;
+  onboardingCount: number;
+  pendingHiringRequests: number;
+  turnoverRate: number;
+  headcountTrend: HeadcountTrendPoint[];
+  enpsAverageScore: number | null;
+};
+
