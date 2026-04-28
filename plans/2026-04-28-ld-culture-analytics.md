@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for ld culture analytics`
 
 ### P2 - API Training / IDP / eNPS / Analytics
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - API CRUD training courses va enrollments.
   - API IDP management.
@@ -32,7 +32,7 @@
   - `feat: implement ld culture and analytics apis`
 
 ### P3 - Training Commitment Cron
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Scheduler kiem tra vi pham cam ket dao tao.
   - Co logging/alert queue noi bo cho violation.
@@ -40,7 +40,7 @@
   - `feat: implement training commitment scheduler`
 
 ### P4 - Validation
-- Status: `TODO`
+- Status: `DONE`
 - Success criteria:
   - Prisma generate thanh cong.
   - Build monorepo pass.
