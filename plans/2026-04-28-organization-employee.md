@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for org and employee`
 
 ### P2 - Department API + Cache
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - CRUD Department cho HR/Admin.
   - Redis cache org tree cho read APIs.
@@ -30,7 +30,7 @@
   - `feat: implement department api with org cache`
 
 ### P3 - Employee Directory & Profile
-- Status: `TODO`
+- Status: `IN PROGRESS`
 - Success criteria:
   - Employee chi xem basic/self.
   - Manager xem team.
