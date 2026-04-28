@@ -19,6 +19,9 @@ model User {
   directReports User[] @relation("UserManager")
   managedDepartments Department[] @relation("DepartmentManager")
   employeeProfile EmployeeProfile?
+  requestedHiringRequests HiringRequest[] @relation("HiringRequestRequester")
+  managedHiringRequests HiringRequest[] @relation("HiringRequestManager")
+  interviews Interview[] @relation("InterviewInterviewer")
   accounts    Account[]
   refreshTokens RefreshToken[]
   createdAt   DateTime @default(now())
@@ -37,6 +40,7 @@ model Department {
   managerUser   User?         @relation("DepartmentManager", fields: [managerUserId], references: [id])
   employeeProfiles EmployeeProfile[]
   contracts     Contract[]
+  hiringRequests HiringRequest[]
   isActive      Boolean       @default(true)
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
@@ -107,5 +111,83 @@ model RefreshToken {
   createdAt   DateTime @default(now())
 
   @@index([userId])
+}
+
+model HiringRequest {
+  id              String        @id @default(cuid())
+  requestCode     String        @unique
+  title           String
+  description     String?
+  departmentId    String
+  department      Department    @relation(fields: [departmentId], references: [id])
+  requesterId     String
+  requester       User          @relation("HiringRequestRequester", fields: [requesterId], references: [id])
+  hiringManagerId String?
+  hiringManager   User?         @relation("HiringRequestManager", fields: [hiringManagerId], references: [id])
+  employmentType  String
+  headcount       Int           @default(1)
+  priority        String        @default("NORMAL")
+  status          String        @default("PENDING_APPROVAL")
+  approvalNote    String?
+  approvedAt      DateTime?
+  requestedAt     DateTime      @default(now())
+  slaDeadlineAt   DateTime
+  slaAlertedAt    DateTime?
+  applications    Application[]
+  createdAt       DateTime      @default(now())
+  updatedAt       DateTime      @updatedAt
+
+  @@index([departmentId])
+  @@index([requesterId])
+  @@index([status])
+}
+
+model Candidate {
+  id            String        @id @default(cuid())
+  fullName      String
+  email         String        @unique
+  phoneNumber   String?
+  source        String?
+  currentCompany String?
+  notes         String?
+  status        String        @default("NEW")
+  appliedAt     DateTime      @default(now())
+  applications  Application[]
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+}
+
+model Application {
+  id               String        @id @default(cuid())
+  hiringRequestId  String
+  hiringRequest    HiringRequest @relation(fields: [hiringRequestId], references: [id], onDelete: Cascade)
+  candidateId      String
+  candidate        Candidate     @relation(fields: [candidateId], references: [id], onDelete: Cascade)
+  status           String        @default("APPLIED")
+  score            Float?
+  notes            String?
+  interviews       Interview[]
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  @@unique([hiringRequestId, candidateId])
+  @@index([status])
+}
+
+model Interview {
+  id             String      @id @default(cuid())
+  applicationId  String
+  application    Application @relation(fields: [applicationId], references: [id], onDelete: Cascade)
+  interviewerId  String?
+  interviewer    User?       @relation("InterviewInterviewer", fields: [interviewerId], references: [id])
+  roundLabel     String
+  scheduledAt    DateTime
+  result         String      @default("PENDING")
+  feedback       String?
+  createdAt      DateTime    @default(now())
+  updatedAt      DateTime    @updatedAt
+
+  @@index([applicationId])
+  @@index([interviewerId])
 }
 

@@ -4,6 +4,12 @@ export const PERMISSIONS = [
   "profile.read.company",
   "department.read",
   "department.write",
+  "recruitment.request.read",
+  "recruitment.request.write",
+  "recruitment.request.approve",
+  "recruitment.candidate.read",
+  "recruitment.candidate.write",
+  "recruitment.interview.write",
   "admin.users.read",
   "admin.system.manage"
 ] as const;
