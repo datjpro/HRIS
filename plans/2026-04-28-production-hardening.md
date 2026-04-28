@@ -3,7 +3,7 @@
 ## Metadata
 - Task: Hardening production cho backend HRIS
 - Branch goc: `dev`
-- Branch lam viec: `chore/production-hardening`
+- Branch lam viec: `chore/local-docker-infra`
 - Trang thai task: `DONE`
 
 ## Muc tieu
@@ -43,6 +43,14 @@
   - bun install + prisma generate + build pass.
 - Commit map:
   - `test: validate production hardening`
+
+### P5 - Local Infrastructure
+- Status: `DONE`
+- Success criteria:
+  - Co `docker-compose.yml` cho Postgres va Redis de chay local.
+  - README mo ta luong khoi dong local DB/Redis va backend.
+- Commit map:
+  - `chore: add local docker infra for postgres and redis`
 
 ## Quy uoc trang thai
 - `TODO`, `IN PROGRESS`, `DONE`, `BLOCKED`

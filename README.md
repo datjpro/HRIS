@@ -28,12 +28,31 @@ Monorepo khoi tao cho he thong quan ly nhan su (HRIS) theo kien truc microservic
 cmd /c bun install
 ```
 
+## Chay local DB + Redis
+```bash
+docker compose up -d
+```
+
+Mac dinh services:
+- Postgres: `localhost:5432`
+- Redis: `localhost:6379`
+
 ## Database workflow
 ```bash
 cmd /c bun run db:generate
 cmd /c bun run db:migrate
 cmd /c bun run db:seed
 cmd /c bun run db:deploy
+```
+
+Luong local de khoi dong backend:
+```bash
+docker compose up -d
+cmd /c bun run db:generate
+cmd /c bun run db:migrate
+cmd /c bun run db:seed
+cmd /c bun run dev:server
+cmd /c bun run dev:worker
 ```
 
 ## Chay tung app
