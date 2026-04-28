@@ -23,6 +23,7 @@ model User {
   managedHiringRequests HiringRequest[] @relation("HiringRequestManager")
   interviews Interview[] @relation("InterviewInterviewer")
   buddyOnboardingPlans OnboardingPlan[] @relation("OnboardingBuddy")
+  generatedPayslips Payslip[] @relation("PayslipGenerator")
   accounts    Account[]
   refreshTokens RefreshToken[]
   createdAt   DateTime @default(now())
@@ -42,6 +43,8 @@ model Department {
   employeeProfiles EmployeeProfile[]
   contracts     Contract[]
   hiringRequests HiringRequest[]
+  salaryBands   SalaryBand[]
+  kpiMetrics    KpiMetric[]
   isActive      Boolean       @default(true)
   createdAt     DateTime      @default(now())
   updatedAt     DateTime      @updatedAt
@@ -64,6 +67,8 @@ model EmployeeProfile {
   emergencyContactPhone String?
   contracts       Contract[]
   onboardingPlans OnboardingPlan[]
+  kpiResults      KpiResult[]
+  payslips        Payslip[]
   createdAt       DateTime    @default(now())
   updatedAt       DateTime    @updatedAt
 
@@ -229,5 +234,79 @@ model OnboardingTask {
 
   @@index([onboardingPlanId])
   @@index([phaseDay])
+}
+
+model SalaryBand {
+  id               String     @id @default(cuid())
+  departmentId     String
+  department       Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  roleLevel        String
+  minBaseSalary    Float
+  maxBaseSalary    Float
+  allowanceDefault Float      @default(0)
+  currency         String     @default("VND")
+  isActive         Boolean    @default(true)
+  createdAt        DateTime   @default(now())
+  updatedAt        DateTime   @updatedAt
+
+  @@unique([departmentId, roleLevel])
+  @@index([departmentId])
+}
+
+model KpiMetric {
+  id            String     @id @default(cuid())
+  departmentId  String
+  department    Department @relation(fields: [departmentId], references: [id], onDelete: Cascade)
+  code          String     @unique
+  name          String
+  description   String?
+  weight        Float
+  targetValue   Float?
+  unit          String?
+  isActive      Boolean    @default(true)
+  results       KpiResult[]
+  createdAt     DateTime   @default(now())
+  updatedAt     DateTime   @updatedAt
+
+  @@index([departmentId])
+}
+
+model KpiResult {
+  id                 String          @id @default(cuid())
+  employeeProfileId  String
+  employeeProfile    EmployeeProfile @relation(fields: [employeeProfileId], references: [id], onDelete: Cascade)
+  metricId           String
+  metric             KpiMetric       @relation(fields: [metricId], references: [id], onDelete: Cascade)
+  period             String
+  achievedValue      Float?
+  score              Float
+  bonusAmount        Float           @default(0)
+  note               String?
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+
+  @@unique([employeeProfileId, metricId, period])
+  @@index([period])
+}
+
+model Payslip {
+  id                 String          @id @default(cuid())
+  employeeProfileId  String
+  employeeProfile    EmployeeProfile @relation(fields: [employeeProfileId], references: [id], onDelete: Cascade)
+  period             String
+  grossBaseSalary    Float
+  kpiBonus           Float           @default(0)
+  allowance          Float           @default(0)
+  deduction          Float           @default(0)
+  netSalary          Float
+  currency           String          @default("VND")
+  generatedByUserId  String?
+  generatedByUser    User?           @relation("PayslipGenerator", fields: [generatedByUserId], references: [id])
+  generatedAt        DateTime        @default(now())
+  createdAt          DateTime        @default(now())
+  updatedAt          DateTime        @updatedAt
+
+  @@unique([employeeProfileId, period])
+  @@index([period])
 }
 

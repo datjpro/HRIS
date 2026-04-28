@@ -14,7 +14,7 @@
 ## Phan viec
 
 ### P1 - Schema & Shared Types
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Prisma schema co `SalaryBand`, `KpiMetric`, `KpiResult`, `Payslip`.
   - Shared types co DTO/response cho compensation va KPI.
@@ -22,7 +22,7 @@
   - `chore: extend schema and shared types for cb and kpi`
 
 ### P2 - API Salary Band / KPI / Payroll
-- Status: `TODO`
+- Status: `IN PROGRESS`
 - Success criteria:
   - CRUD Salary Band.
   - API KPI metrics/results.

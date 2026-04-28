@@ -12,6 +12,12 @@ export const PERMISSIONS = [
   "recruitment.interview.write",
   "onboarding.read",
   "onboarding.write",
+  "compensation.read",
+  "compensation.write",
+  "kpi.read",
+  "kpi.write",
+  "payroll.generate",
+  "payroll.export",
   "admin.users.read",
   "admin.system.manage"
 ] as const;

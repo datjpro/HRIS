@@ -267,3 +267,72 @@ export type OnboardingJobPayload = {
   checklistTemplate: "30-60-90";
 };
 
+export type SalaryBandDTO = {
+  id: string;
+  departmentId: string;
+  roleLevel: string;
+  minBaseSalary: number;
+  maxBaseSalary: number;
+  allowanceDefault: number;
+  currency: string;
+  isActive: boolean;
+};
+
+export type SalaryBandUpsertDTO = {
+  departmentId: string;
+  roleLevel: string;
+  minBaseSalary: number;
+  maxBaseSalary: number;
+  allowanceDefault?: number;
+  currency?: string;
+  isActive?: boolean;
+};
+
+export type KpiMetricDTO = {
+  id: string;
+  departmentId: string;
+  code: string;
+  name: string;
+  description?: string;
+  weight: number;
+  targetValue?: number;
+  unit?: string;
+  isActive: boolean;
+};
+
+export type KpiResultDTO = {
+  id: string;
+  employeeProfileId: string;
+  metricId: string;
+  period: string;
+  achievedValue?: number;
+  score: number;
+  bonusAmount: number;
+  note?: string;
+};
+
+export type PayslipDTO = {
+  id: string;
+  employeeProfileId: string;
+  period: string;
+  grossBaseSalary: number;
+  kpiBonus: number;
+  allowance: number;
+  deduction: number;
+  netSalary: number;
+  currency: string;
+  generatedByUserId?: string;
+  generatedAt: string;
+};
+
+export type PayrollGenerateDTO = {
+  period: string;
+  employeeProfileId?: string;
+  deduction?: number;
+};
+
+export type PayrollExportJobPayload = {
+  period: string;
+  requestedByUserId: string;
+};
+
