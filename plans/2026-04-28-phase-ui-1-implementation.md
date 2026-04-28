@@ -127,7 +127,7 @@ Xay dung nen tang giao dien co the tai su dung cho toan bo `apps/web`, bao gom:
   - `feat(web): add dashboard app shell layout`
 
 ### P4 - Navigation & Placeholder Pages
-- Status: `TODO`
+- Status: `DONE`
 - Muc tieu:
   - Co route placeholder de test shell va flow dieu huong.
 - Cong viec:

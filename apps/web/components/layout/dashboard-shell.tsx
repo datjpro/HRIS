@@ -10,13 +10,51 @@ type NavigationItem = {
   href: string;
   label: string;
   description: string;
+  children?: Array<{ href: string; label: string }>;
 };
 
 const navigationItems: NavigationItem[] = [
-  { href: "/me", label: "My Space", description: "Self-service" },
-  { href: "/manager", label: "Manager", description: "Team ops" },
-  { href: "/hr", label: "HR", description: "People ops" },
-  { href: "/admin", label: "Admin", description: "Platform" }
+  {
+    href: "/me",
+    label: "My Space",
+    description: "Self-service",
+    children: [
+      { href: "/me/profile", label: "Profile" },
+      { href: "/me/payslips", label: "Payslips" },
+      { href: "/me/kpi", label: "KPI" },
+      { href: "/me/idp", label: "IDP" },
+      { href: "/me/onboarding", label: "Onboarding" }
+    ]
+  },
+  {
+    href: "/manager",
+    label: "Manager",
+    description: "Team ops",
+    children: [
+      { href: "/manager/team", label: "Team" },
+      { href: "/manager/recruitment-requests", label: "Requests" },
+      { href: "/manager/interviews", label: "Interviews" }
+    ]
+  },
+  {
+    href: "/hr",
+    label: "HR",
+    description: "People ops",
+    children: [
+      { href: "/hr/departments", label: "Departments" },
+      { href: "/hr/employees", label: "Employees" },
+      { href: "/hr/recruitment/requests", label: "Recruitment" },
+      { href: "/hr/onboarding", label: "Onboarding" },
+      { href: "/hr/compensation/salary-bands", label: "Compensation" },
+      { href: "/hr/analytics", label: "Analytics" }
+    ]
+  },
+  {
+    href: "/admin",
+    label: "Admin",
+    description: "Platform",
+    children: [{ href: "/admin/users", label: "Users" }]
+  }
 ];
 
 type DashboardShellProps = {
@@ -42,17 +80,36 @@ export function DashboardShell({ children }: DashboardShellProps) {
             const isActive = pathname === item.href || pathname.startsWith(`${item.href}/`);
 
             return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn("dashboard-shell__nav-item", isActive && "dashboard-shell__nav-item--active")}
-              >
-                <div>
-                  <div className="dashboard-shell__nav-label">{item.label}</div>
-                  <div className="dashboard-shell__nav-description">{item.description}</div>
-                </div>
-                {isActive ? <Badge variant="info">Active</Badge> : null}
-              </Link>
+              <div key={item.href}>
+                <Link
+                  href={item.href}
+                  className={cn("dashboard-shell__nav-item", isActive && "dashboard-shell__nav-item--active")}
+                >
+                  <div>
+                    <div className="dashboard-shell__nav-label">{item.label}</div>
+                    <div className="dashboard-shell__nav-description">{item.description}</div>
+                  </div>
+                  {isActive ? <Badge variant="info">Active</Badge> : null}
+                </Link>
+
+                {item.children?.length ? (
+                  <div className="dashboard-shell__subnav">
+                    {item.children.map((child) => {
+                      const isChildActive = pathname === child.href || pathname.startsWith(`${child.href}/`);
+
+                      return (
+                        <Link
+                          key={child.href}
+                          href={child.href}
+                          className={cn("dashboard-shell__subnav-item", isChildActive && "dashboard-shell__subnav-item--active")}
+                        >
+                          {child.label}
+                        </Link>
+                      );
+                    })}
+                  </div>
+                ) : null}
+              </div>
             );
           })}
         </nav>
@@ -60,7 +117,9 @@ export function DashboardShell({ children }: DashboardShellProps) {
         <div className="dashboard-shell__promo surface-card">
           <div className="dashboard-shell__promo-title">Foundation phase</div>
           <p className="dashboard-shell__promo-copy">Shared shell and component primitives are ready for the next business pages.</p>
-          <Button variant="secondary">Review UI</Button>
+          <Link href="/ui-preview" className="dashboard-shell__promo-link">
+            <Button variant="secondary">Review UI</Button>
+          </Link>
         </div>
       </aside>
 
