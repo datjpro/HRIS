@@ -1,23 +1,38 @@
-import type { Context, Next } from "hono";
-import type { Role } from "@hris/shared-types";
-import { ROLES } from "@hris/shared-types";
+import type { MiddlewareHandler } from "hono";
+import { verifyAccessToken } from "../lib/jwt";
+import type { AppBindings } from "../lib/app-bindings";
 
-export async function authMiddleware(context: Context, next: Next) {
-  const userId = context.req.header("x-user-id");
-  const roleHeader = context.req.header("x-user-role");
+export const authMiddleware: MiddlewareHandler<AppBindings> = async (context, next) => {
+  const authorizationHeader = context.req.header("authorization");
+  const token = authorizationHeader?.startsWith("Bearer ") ? authorizationHeader.slice(7) : undefined;
 
-  if (!userId || !roleHeader || !ROLES.includes(roleHeader as Role)) {
+  if (!token) {
     return context.json(
       {
         success: false,
         error: {
           code: "UNAUTHORIZED",
-          message: "Missing or invalid authentication headers"
+          message: "Missing bearer token"
         }
       },
       401
     );
   }
 
-  await next();
-}
+  try {
+    const payload = await verifyAccessToken(token);
+    context.set("user", payload);
+    await next();
+  } catch {
+    return context.json(
+      {
+        success: false,
+        error: {
+          code: "UNAUTHORIZED",
+          message: "Invalid or expired access token"
+        }
+      },
+      401
+    );
+  }
+};
