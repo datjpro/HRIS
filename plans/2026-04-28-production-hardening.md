@@ -14,7 +14,7 @@
 ## Phan viec
 
 ### P1 - Migration & Seed Workflow
-- Status: `IN PROGRESS`
+- Status: `DONE`
 - Success criteria:
   - Co script migrate/deploy/reset/seed ro rang.
   - Co seed demo data cho local testing.
@@ -22,7 +22,7 @@
   - `chore: add migration and seed workflow`
 
 ### P2 - Audit Logging & Rate Limit
-- Status: `TODO`
+- Status: `IN PROGRESS`
 - Success criteria:
   - Co middleware request log co request-id.
   - Co rate limiting cho auth va payroll export APIs.
